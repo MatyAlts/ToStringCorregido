@@ -1,27 +1,20 @@
-// Clase Domicilio (versión corregida)
+import lombok.*;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString(exclude = "residente")
+@EqualsAndHashCode(exclude = "residente")
+
 public class Domicilio {
     private String calle;
     private int numero;
-    // No necesitamos una referencia a Persona para el propósito del toString()
-    // Aunque la tuviéramos para otra lógica, no la usaríamos en este método
+    // Asignar el residente después de la creación
     private Persona residente;
 
     public Domicilio(String calle, int numero) {
         this.calle = calle;
         this.numero = numero;
-    }
-
-    // Asignar el residente después de la creación
-    public void setResidente(Persona residente) {
-        this.residente = residente;
-    }
-
-    // Método toString() corregido: no llama a Persona.toString()
-    @Override
-    public String toString() {
-        return "Domicilio{" +
-                "calle='" + calle + '\'' +
-                ", numero=" + numero +
-                '}';
     }
 }

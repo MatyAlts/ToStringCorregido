@@ -1,12 +1,17 @@
 public class Main {
     public static void main(String[] args) {
 
+        Domicilio miCasa = Domicilio.builder()
+                .calle("Calle falsa")
+                .numero(123)
+                .build();
+        Persona yo = Persona.builder()
+                .nombre("Juan")
+                .edad(30)
+                .domicilio(miCasa)
+                .build();
+        miCasa.setResidente(yo);
+        System.out.println(yo);
 
-                Domicilio miCasa = new Domicilio("Calle Falsa", 123);
-                Persona yo = new Persona("Juan", 30, miCasa);
-
-                // Ahora, esta llamada funciona correctamente sin recursividad
-                System.out.println(yo);
-                // Salida: Persona{nombre='Juan', edad=30, domicilio=Domicilio{calle='Calle Falsa', numero=123}}
-            }
-        }
+    }
+}
